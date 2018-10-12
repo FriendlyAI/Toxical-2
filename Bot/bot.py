@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import asyncio
 import pickle
 import time
 
@@ -15,7 +14,7 @@ NEURAL_NET = create()
 
 BOT_PREFIX = '!'
 # Get at https://discordapp.com/developers/applications/me
-TOKEN = open('token.txt', 'r').readline()
+TOKEN = open('../Bot/token.txt', 'r').readline().rstrip()
 
 client = Bot(command_prefix=BOT_PREFIX)
 
@@ -58,6 +57,7 @@ try:
 except (OSError, IOError) as e:
     member_list = []
     pickle.dump(member_list, open('users.pickle', 'wb'), protocol=pickle.HIGHEST_PROTOCOL)
+
 
 @client.event
 async def on_ready():
@@ -148,6 +148,7 @@ async def score(ctx):
             await client.send_message(ctx.message.channel,
                                       f'{ctx.message.author}\'s score is '
                                       f'{"{0:0.1f}".format(min(prev_score + time_points, MAX_SCORE))}/{MAX_SCORE}')
+
 
 if __name__ == '__main__':
     client.loop.create_task(list_servers())
