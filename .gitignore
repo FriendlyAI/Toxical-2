@@ -1,0 +1,11 @@
+.idea/
+*.xml
+__pycache__
+test.py
+Pretrained/*
+ids_matrix.npy
+tensorboard
+Negative
+Non-negative
+users.pickle
+token.txt
