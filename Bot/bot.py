@@ -33,7 +33,7 @@ def get_sentiment(sentence):
     return non_negative_score - negative_score, string_format
 
 
-# class for member info
+# Class for user info
 class DiscordMember:
     def __init__(self, uid, last_message_time):
         self.id = uid
@@ -41,17 +41,14 @@ class DiscordMember:
         self.last_message_time = last_message_time
 
     def __eq__(self, other):
-        if self.id == other.id:
-            return True
-        return False
+        return self.id == other.id
 
     def __str__(self):
-        return 'ID: ' + self.id + '\n' + \
-               'Score: ' + str(self.score) + '\n' + \
-               '--------------------------------'
+        return f'ID: {self.id}\n' \
+               f'Score: {self.score}\n\n'
 
 
-# loads data from previous session of bot
+# Loads data from previous session of bot
 try:
     member_list = pickle.load(open('users.pickle', 'rb'))
 except (OSError, IOError) as e:
